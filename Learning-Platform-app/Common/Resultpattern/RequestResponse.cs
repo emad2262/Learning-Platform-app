@@ -1,6 +1,6 @@
 ﻿namespace Learning_Platform_app.Common.Result_pattern
 {
-    public class RequestResponse
+    public class RequestResponse<T> 
     {
     }
 }

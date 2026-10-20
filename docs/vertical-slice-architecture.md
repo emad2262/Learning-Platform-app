@@ -3,8 +3,10 @@
 المشروع تطبيق واحد. تنظيم العمليات حسب الـ feature. داخل Academies التقسيم حسب
 المسؤولية (Commands وValidation وOrchestrators وDTOs وViewModels وQueries
 وControllers)، وباقي الـ features تحتفظ حاليًا بتقسيمها حسب العملية.
-المجلدات المجهزة هي أماكن لإضافة التنفيذ؛ لا تحتوي حاليًا على handlers أو خدمات
-أو entities من النسخة السابقة.
+المجلدات المجهزة هي أماكن لإضافة تنفيذ الـ features. يوجد حاليًا الموديل الأساسي
+للأكاديمية ومالكها وبروفايلات الطلاب والمدرّسين وIdentity والـ DbContext؛ راجع
+[دليل قاعدة البيانات](database-setup.md). عمليات الـ handlers والـ orchestrators
+ليست منفذة بعد.
 
 ## الهيكل
 
@@ -22,7 +24,6 @@ Learning-Platform-app/
 │   │   ├── ViewModels/
 │   │   ├── Queries/
 │   │   └── Controllers/
-│   ├── Memberships/JoinAcademy/
 │   ├── Courses/
 │   │   ├── CreateCourse/
 │   │   └── GetCourses/
@@ -57,7 +58,6 @@ Learning-Platform-app/
 │   ├── Transactions/
 │   ├── Payments/
 │   └── Storage/
-├── Requests/LearningPlatform.http
 ├── Properties/
 ├── Program.cs
 └── appsettings.json
@@ -122,7 +122,7 @@ GetCoursesQuery وGetCoursesHandler وGetCoursesResponse في Features/Courses/G
 | Common/Abstractions/Persistence | عقود الوصول للبيانات ووحدة العمل عند استخدامها |
 | Common/Abstractions/Payments | عقد بوابة الدفع الذي تحتاجه العمليات |
 | Infrastructure/Persistence | DbContext وإعدادات EF والمستودعات وبيانات البداية |
-| Infrastructure/Persistence/Migrations | يضاف عند إنشاء أول migration |
+| Infrastructure/Persistence/Migrations | migrations ومخطط الموديل؛ البداية InitialAcademySchema |
 | Infrastructure/Payments | تكامل بوابة الدفع والتحقق من الإشعارات |
 | Infrastructure/Storage | تكامل تخزين الملفات والفيديو |
 | Program.cs | تركيب التطبيق وتسجيل الخدمات وربط الـ endpoints |

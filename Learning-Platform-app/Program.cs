@@ -1,4 +1,7 @@
 
+using Learning_Platform_app.Infrastructure.Persistence;
+using Scalar.AspNetCore;
+
 namespace Learning_Platform_app
 {
     public class Program
@@ -7,7 +10,7 @@ namespace Learning_Platform_app
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.AddPersistence(builder.Configuration);
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -19,6 +22,11 @@ namespace Learning_Platform_app
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+
+                app.MapScalarApiReference(option =>
+                {
+                     option.WithTheme(ScalarTheme.DeepSpace);
+                });
             }
 
             app.UseHttpsRedirection();
