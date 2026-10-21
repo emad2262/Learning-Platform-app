@@ -1,5 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
+using Learning_Platform_app.Common.Abstractions;
+using Learning_Platform_app.Infrastructure.Persistence.Repositories;
 
 namespace Learning_Platform_app.Infrastructure.Persistence;
 
@@ -19,6 +21,9 @@ public static class DependencyInjection
             option.UseSqlServer(connectionString);
         });        
        
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+
         return services;
     }
 }
